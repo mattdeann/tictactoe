@@ -12,17 +12,56 @@ class Game {
 
 
   placeGamePiece(player, placementIndex)  {
-    debugger
     this.board.splice([placementIndex], 1, player.gamePiece)
     player.gamePlacements.push(placementIndex);
-        console.log(player.gamePlacements);
-    var winCheck = player.gamePlacements.join("")
-    if (player.gamePlacements.includes(0) && player.gamePlacements.includes(1) && player.gamePlacements.includes(2)) {
-      console.log(`Player 1 wins!`);
-    }
-    
+    this.checkWin();
+  }
+
+  checkWin() {
+    this.rowWin();
+    this.columnWin();
+    this.diagonalWin();
+    if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
+      console.log('Yay you won');
     }
   }
+
+  rowWin() {
+    if (this.player.gamePlacements.includes(0) && this.player.gamePlacements.includes(1) && this.player.gamePlacements.includes(2)) {
+      player.wins.push(this);
+      return true;
+    }
+    if (player.gamePlacements.includes(3) && player.gamePlacements.includes(4) && player.gamePlacements.includes(5)) {
+      player.wins.push(this);
+      return true;
+    }
+    if (player.gamePlacements.includes(6) && player.gamePlacements.includes(7) && player.gamePlacements.includes(8)) {
+      player.wins.push(this);
+      return true;
+    } 
+  }
+
+  columnWin(player) {
+    if (player.gamePlacements.includes(0) && player.gamePlacements.includes(3) && player.gamePlacements.includes(6)) {
+      player.wins.push(this);
+    }
+    if (player.gamePlacements.includes(1) && player.gamePlacements.includes(4) && player.gamePlacements.includes(7)) {
+      player.wins.push(this);
+    }
+    if (player.gamePlacements.includes(2) && player.gamePlacements.includes(5) && player.gamePlacements.includes(8)) {
+      player.wins.push(this);
+    } 
+  }
+
+  diagonalWin(player) {
+    if (player.gamePlacements.includes(0) && player.gamePlacements.includes(4) && player.gamePlacements.includes(8)) {
+      player.wins.push(this);
+    }
+    if (player.gamePlacements.includes(2) && player.gamePlacements.includes(4) && player.gamePlacements.includes(6)) {
+      player.wins.push(this);
+    }
+  }
+}
 
 
 
