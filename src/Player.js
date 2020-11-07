@@ -1,8 +1,7 @@
 class Player {
-  constructor(playerNumber, gamePiece, gamePlacements, wins) {
-    this.playerNumber = playerNumber;
-    this.gamePiece = gamePiece || 'X';
-    this.gamePlacements = gamePlacements || [];
+  constructor(gamePiece, gamePlacements, wins) {
+    this.gamePiece = gamePiece;
+    this.gamePlacements = [];
     this.wins = wins || [];
   }
 }

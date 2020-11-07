@@ -8,57 +8,71 @@ class Game {
     this.player1 = player1;
     this.player2 = player2;
     this.board = board || [ , , , , , , , , ,];
+    this.currentPlayer = this.player1;
+    this.turnCount = 2;
+  }
+
+  whosTurn() {
+    if (this.turnCount % 2 === 0) {
+      this.currentPlayer = this.player1;
+    } else {
+      this.currentPlayer = this.player2;
+    }
+    this.turnCount++;
   }
 
 
-  placeGamePiece(player, placementIndex)  {
-    this.board.splice([placementIndex], 1, player.gamePiece)
-    player.gamePlacements.push(placementIndex);
+  placeGamePiece(placementIndex)  {
+    this.whosTurn();
+    this.board.splice([placementIndex], 1, this.currentPlayer.gamePiece)
+    this.currentPlayer.gamePlacements.push(placementIndex);
     this.checkWin();
   }
 
   checkWin() {
-    this.rowWin();
-    this.columnWin();
-    this.diagonalWin();
     if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
-      console.log('Yay you won');
+      console.log(`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
     }
   }
 
   rowWin() {
-    if (this.player.gamePlacements.includes(0) && this.player.gamePlacements.includes(1) && this.player.gamePlacements.includes(2)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(0) && this.currentPlayer.gamePlacements.includes(1) && this.currentPlayer.gamePlacements.includes(2)) {
+      this.currentPlayer.wins.push(this);
       return true;
     }
-    if (player.gamePlacements.includes(3) && player.gamePlacements.includes(4) && player.gamePlacements.includes(5)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(3) && this.currentPlayer.gamePlacements.includes(4) && this.currentPlayer.gamePlacements.includes(5)) {
+      this.currentPlayer.wins.push(this);
       return true;
     }
-    if (player.gamePlacements.includes(6) && player.gamePlacements.includes(7) && player.gamePlacements.includes(8)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(6) && this.currentPlayer.gamePlacements.includes(7) && this.currentPlayer.gamePlacements.includes(8)) {
+      this.currentPlayer.wins.push(this);
       return true;
     } 
   }
 
-  columnWin(player) {
-    if (player.gamePlacements.includes(0) && player.gamePlacements.includes(3) && player.gamePlacements.includes(6)) {
-      player.wins.push(this);
+  columnWin() {
+    if (this.currentPlayer.gamePlacements.includes(0) && this.currentPlayer.gamePlacements.includes(3) && this.currentPlayer.gamePlacements.includes(6)) {
+      this.currentPlayer.wins.push(this);
+      return true;
     }
-    if (player.gamePlacements.includes(1) && player.gamePlacements.includes(4) && player.gamePlacements.includes(7)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(1) && this.currentPlayer.gamePlacements.includes(4) && this.currentPlayer.gamePlacements.includes(7)) {
+      this.currentPlayer.wins.push(this);
+      return true;
     }
-    if (player.gamePlacements.includes(2) && player.gamePlacements.includes(5) && player.gamePlacements.includes(8)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(2) && this.currentPlayer.gamePlacements.includes(5) && this.currentPlayer.gamePlacements.includes(8)) {
+      this.currentPlayer.wins.push(this);
+      return true;
     } 
   }
 
-  diagonalWin(player) {
-    if (player.gamePlacements.includes(0) && player.gamePlacements.includes(4) && player.gamePlacements.includes(8)) {
-      player.wins.push(this);
+  diagonalWin() {
+    if (this.currentPlayer.gamePlacements.includes(0) && this.currentPlayer.gamePlacements.includes(4) && this.currentPlayer.gamePlacements.includes(8)) {
+      this.currentPlayer.wins.push(this);
+      return true;
     }
-    if (player.gamePlacements.includes(2) && player.gamePlacements.includes(4) && player.gamePlacements.includes(6)) {
-      player.wins.push(this);
+    if (this.currentPlayer.gamePlacements.includes(2) && this.currentPlayer.gamePlacements.includes(4) && this.currentPlayer.gamePlacements.includes(6)) {
+      this.currentPlayer.wins.push(this);
+      return true;
     }
   }
 }
