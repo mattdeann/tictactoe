@@ -8,4 +8,6 @@ game1.placeGamePiece(0);
 game1.placeGamePiece(6);
 game1.placeGamePiece(4);
 game1.placeGamePiece(7);
-game1.placeGamePiece(8)
+game1.placeGamePiece(2);
+game1.placeGamePiece(3);
+game1.placeGamePiece(8);
