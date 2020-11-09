@@ -1,13 +1,24 @@
-var Jack = new Player('X');
-var Diane = new Player('O');
+var game = new Game();
 
-var game1 = new Game(Jack, Diane);
+var gameBoard = document.querySelector(".game-board");
 
-game1.placeGamePiece(1);
-game1.placeGamePiece(0);
-game1.placeGamePiece(6);
-game1.placeGamePiece(4);
-game1.placeGamePiece(7);
-game1.placeGamePiece(2);
-game1.placeGamePiece(3);
-game1.placeGamePiece(8);
+gameBoard.addEventListener('click', updateGameBoard);
+
+
+//click board
+//take id that is index and run placeGamePiece function
+//if array includes the index, dont run function but return alert
+//
+//update DOM based on game.board
+
+
+function updateGameBoard(event) {
+  var clickedIndex = event.target.closest("ul").id;
+  
+  game.placeGamePiece(clickedIndex)
+  console.log(event.target.closest("ul").innerText);
+
+  event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
+
+  game.checkWin();
+}
