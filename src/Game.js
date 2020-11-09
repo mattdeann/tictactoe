@@ -3,6 +3,11 @@
 // assess whether or not game was won or tied
 // switch player who is allowed to run function
 
+var gameBoard = document.querySelector(".game-board");
+
+
+gameBoard.addEventListener('click', updateGameBoard);
+
 class Game {
   constructor(player1, player2, board) {
     this.player1 = player1;
@@ -74,6 +79,10 @@ class Game {
       this.currentPlayer.wins.push(this);
       return true;
     }
+  }
+
+  updateGameBoard() {
+    
   }
 }
 
