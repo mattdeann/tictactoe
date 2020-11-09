@@ -45,21 +45,62 @@ h2 {
 {
 	width: 400px !important;
   height: 400px !important;
-  background-color: orange;
+  background-color: none;
   color: black;
-  border-radius: 10px;
 	display: grid;
 	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
 .square
 {
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 10px solid maroon;
+  border-collapse: collapse;
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }
+
+.top-left {
+  border-left: none;
+  border-top: none;
+}
+
+.top-center {
+  border-top: none;
+}
+
+.top-right {
+  border-right: none;
+  border-top: none;
+}
+
+.middle-left {
+  border-left: none;
+}
+
+.middle-right {
+   border-right: none;
+}
+
+.bottom-left {
+  border-left: none;
+  border-bottom: none;
+}
+
+.bottom-center {
+  border-bottom: none;
+}
+
+.bottom-right {
+  border-right: none;
+  border-bottom: none;
+}
+
+
+
+
+
 
 
 .right-box {
