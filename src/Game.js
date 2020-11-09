@@ -47,7 +47,9 @@ class Game {
 
   checkWin() {
     if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
-      console.log(`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
+      titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
+    
+
     }
   }
 

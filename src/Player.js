@@ -4,5 +4,13 @@ class Player {
     this.gamePlacements = [];
     this.wins = wins || [];
   }
+
+  saveWinsToStorage() {
+    
+  }
+
+  retrieveWinsFromStorage() {
+
+  }
 }
 
