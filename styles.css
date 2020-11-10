@@ -29,6 +29,10 @@ article {
   min-width: 10rem;
 }
 
+header {
+  padding-bottom: 4rem;
+}
+
 .left-box {
   grid-column: 1 / 2;
 }
