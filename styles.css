@@ -52,6 +52,8 @@ article {
 .game-board {
   min-width: 400px;
   min-height: 400px;
+  padding-left: 2vw;
+  padding-right: 2vw;
   background-color: none;
   color: black;
 	display: grid;
