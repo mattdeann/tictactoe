@@ -9,13 +9,14 @@ class Player {
     localStorage.setItem(`${this.gamePiece}`, JSON.stringify(this));
   }
 
-  //take players on page load
-  //put them in the freakin function bro!
 
   retrieveWinsFromStorage() {
-    if (localStorage.getItem`${this.gamepiece}`)
     var retrievedPlayer = JSON.parse(localStorage.getItem(`${this.gamePiece}`));
-    this.wins = retrievedPlayer.wins
+    if (retrievedPlayer === null) {
+      this.wins = 0;
+    } else {
+      this.wins = retrievedPlayer.wins
+    }
   }
 }
 
