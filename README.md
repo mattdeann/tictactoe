@@ -17,9 +17,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Main Page](https://i.imgur.com/o9Uvrbg.png)
+![Main Page](https://i.imgur.com/Mz6MCBL.png)
 
 This project demonstrates front end development skills acquired during Module 1 of Turing. The repo includes examples of JavaScript data manipulation, DOM manipulation, usage of local storage, and HTML/CSS construction.
+
+The task was to create a Tic Tac Toe game starting from scratch using mainly JavaScript to create a data model and update the DOM based on this information. Wins and draws are signified with the header of the center column changing to indicate direction. The board will reset after a timeout once a game is finished. Wins are counted by player in the side columns, and saved to local storage so player wins will be remembered on page reload.
 
 
 ### Languages Used
