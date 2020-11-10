@@ -1,3 +1,5 @@
+/* Document Styling */
+
 body {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;  
@@ -14,6 +16,8 @@ article {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
+/* Side Column Styling */
 
 .side-box {
   background: linear-gradient(to bottom, white, orange, red);
@@ -32,6 +36,8 @@ article {
 .right-box {
   grid-column: 3 / -1;
 }
+
+/* Game Column Styling */
 
 .main-box {
   grid-column: 2 / 3;
@@ -77,6 +83,8 @@ article {
   border-top: none;
 }
 
+/* Mobile Viewport Accesibility */
+
 @media only screen and (max-width: 480px) {
   body {
     display: grid;
@@ -85,11 +93,6 @@ article {
     "a b"
     "c c";
     background: linear-gradient(to bottom, white, orange, red);
-  }
-
-  .left-box {
-    grid-area: a;
-    background: none;
   }
 
   .main-box {
@@ -106,6 +109,11 @@ article {
   .side-box {
     padding-top: 2vh;
     max-height: 1rem;
+  }
+  
+  .left-box {
+    grid-area: a;
+    background: none;
   }
 
   .right-box {
