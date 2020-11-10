@@ -123,8 +123,4 @@ article {
     grid-area: b;
     background: none;
   }
-
-  h1 h3 {
-    font-size: 40px !important;
-  }
 }
