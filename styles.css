@@ -1,5 +1,4 @@
 /* Document Styling */
-
 body {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;  
@@ -18,7 +17,6 @@ article {
 }
 
 /* Side Column Styling */
-
 .side-box {
   background: linear-gradient(to bottom, white, orange, red);
   display: flex;
@@ -38,7 +36,6 @@ article {
 }
 
 /* Game Column Styling */
-
 .main-box {
   grid-column: 2 / 3;
   display: flex;
@@ -86,7 +83,6 @@ article {
 }
 
 /* Mobile Viewport Accesibility */
-
 @media only screen and (max-width: 480px) {
   body {
     display: grid;

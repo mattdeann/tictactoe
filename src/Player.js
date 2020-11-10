@@ -9,7 +9,6 @@ class Player {
     localStorage.setItem(`${this.gamePiece}`, JSON.stringify(this));
   }
 
-
   retrieveWinsFromStorage() {
     var retrievedPlayer = JSON.parse(localStorage.getItem(`${this.gamePiece}`));
     
@@ -20,4 +19,3 @@ class Player {
     }
   }
 }
-
