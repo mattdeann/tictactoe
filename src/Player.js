@@ -12,6 +12,7 @@ class Player {
 
   retrieveWinsFromStorage() {
     var retrievedPlayer = JSON.parse(localStorage.getItem(`${this.gamePiece}`));
+    
     if (retrievedPlayer === null) {
       this.wins = 0;
     } else {
