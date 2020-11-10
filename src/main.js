@@ -1,6 +1,6 @@
 //Query Selectors
 var gameBoard = document.querySelector(".game-board");
-var titleBox = document.querySelector("h2");
+var titleBox = document.querySelector(".main-header");
 var xWins = document.querySelector(".x-wins");
 var oWins = document.querySelector(".o-wins");
 
@@ -22,7 +22,7 @@ function updateGameBoard(event) {
   
   if (!game.checkWin() && !game.checkDraw()) {
     game.whosTurn();
-    titleBox.innerText = `${game.currentPlayer.gamePiece} to move`
+    titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
   }
 }
   
@@ -30,7 +30,7 @@ function updateGameBoard(event) {
 function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
 
-  titleBox.innerText = `${game.currentPlayer.gamePiece} to move`
+  titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
   
   //BETTER WAY TO RESET INNERHTML???
 

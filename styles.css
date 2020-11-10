@@ -21,6 +21,7 @@ article {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-top: 10vh;
   min-width: 10rem;
 }
 
@@ -44,13 +45,13 @@ article {
 .main-header {
   grid-row: 1 / 2;
   min-height: 15vh;
-  padding: 20px;
+  padding-top: 10vh;
+  font-size: clamp(36px, 4vw, 50px);
 }
 
-.game-board
-{
-	width: 400px !important;
-  height: 400px !important;
+.game-board {
+  min-width: 400px;
+  min-height: 400px;
   background-color: none;
   color: black;
 	display: grid;
@@ -74,4 +75,45 @@ article {
 
 .square:nth-child(-n+3) {
   border-top: none;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-areas:
+    "a b"
+    "c c";
+    background: linear-gradient(to bottom, white, orange, red);
+  }
+
+  .left-box {
+    grid-area: a;
+    background: none;
+  }
+
+  .main-box {
+    grid-area: c;
+  }
+  
+  .main-header {
+    padding-top: 0px;
+    padding-bottom: 2vh;
+    min-height: 5vh;
+    font-size: 2rem;
+  }
+
+  .side-box {
+    padding-top: 2vh;
+    max-height: 1rem;
+  }
+
+  .right-box {
+    grid-area: b;
+    background: none;
+  }
+
+  h1 h3 {
+    font-size: 40px !important;
+  }
 }
