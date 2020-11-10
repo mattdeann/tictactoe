@@ -2,10 +2,10 @@ var gameBoard = document.querySelector(".game-board");
 var titleBox = document.querySelector("h2");
 var xWins = document.querySelector(".x-wins");
 var oWins = document.querySelector(".o-wins");
+var game = new Game();
 
 
 gameBoard.addEventListener('click', updateGameBoard);
-window.onload = resetBoard();
 
 
 function updateGameBoard(event) {
@@ -13,15 +13,16 @@ function updateGameBoard(event) {
   
   game.placeGamePiece(clickedIndex)
   event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
-  if(game.checkWin()) {
-   resetBoard();
-  };
+  
+  if (!game.checkWin() && !game.checkDraw()) {
+    game.whosTurn();
+    titleBox.innerText = `${game.currentPlayer.gamePiece} to move`
+  }
 }
+  
 
 function resetBoard() {
-  var game = new Game(game.playerX.wins, game.playerO.wins);
-
-  titleBox.innerText = `${game.currentPlayer.gamePiece} to move`
+  game = new Game(game.playerX.wins, game.playerO.wins);
 
   //BETTER WAY TO RESET INNERHTML???
 

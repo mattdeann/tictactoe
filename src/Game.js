@@ -13,23 +13,20 @@ class Game {
     } else {
       this.currentPlayer = this.playerO;
     }
-
-    this.turnCount++;
   }
-
-  resetBoardOnDraw() {
-    titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
-    setTimeout(resetBoard, 1500);
-  }
-
-
 
   placeGamePiece(placementIndex)  {
-    this.whosTurn();
+    this.turnCount++;
     this.board.splice([placementIndex], 1, this.currentPlayer.gamePiece)
-    this.currentPlayer.gamePlacements.push(placementIndex);
-    if (this.turnCount >= 11) {
-      this.resetBoardOnDraw();
+    this.currentPlayer.gamePlacements.push(placementIndex);   
+  }
+
+  checkWin() {
+    if (this.rowWin() || this.columnWin() || this.diagonalWin()) {
+      this.updateWinCounter();
+      titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
+      setTimeout(resetBoard, 1500);
+      return true;
     }
   }
 
@@ -38,11 +35,11 @@ class Game {
     oWins.innerText = `${this.playerO.wins} wins`;
   }
 
-  checkWin() {
-    if (this.rowWin() || this.columnWin() || this.diagonalWin()) {
-      titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
-      this.updateWinCounter();
+  checkDraw() {
+    if (this.turnCount >= 11) {
+      titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
       setTimeout(resetBoard, 1500);
+      return true;
     }
   }
 
@@ -53,10 +50,12 @@ class Game {
       this.currentPlayer.wins++;
       return true;
     }
+
     if (this.currentPlayer.gamePlacements.includes("3") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("5")) {
       this.currentPlayer.wins++;
       return true;
     }
+
     if (this.currentPlayer.gamePlacements.includes("6") && this.currentPlayer.gamePlacements.includes("7") && this.currentPlayer.gamePlacements.includes("8")) {
       this.currentPlayer.wins++;
       return true;
@@ -68,10 +67,12 @@ class Game {
       this.currentPlayer.wins++;
       return true;
     }
+
     if (this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("7")) {
       this.currentPlayer.wins++;
       return true;
     }
+
     if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("5") && this.currentPlayer.gamePlacements.includes("8")) {
       this.currentPlayer.wins++;
       return true;
@@ -83,6 +84,7 @@ class Game {
       this.currentPlayer.wins++;
       return true;
     }
+
     if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("6")) {
       this.currentPlayer.wins++;
       return true;
