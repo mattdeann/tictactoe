@@ -28,6 +28,7 @@ function updateGameBoard(event) {
 
 function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
+  gameBoard.classList.remove("disable-click");
 
   titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
   gameBoard.innerHTML = `
