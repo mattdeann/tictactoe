@@ -1,13 +1,17 @@
+//Query Selectors
 var gameBoard = document.querySelector(".game-board");
 var titleBox = document.querySelector("h2");
 var xWins = document.querySelector(".x-wins");
 var oWins = document.querySelector(".o-wins");
+
+//Global Variables
 var game = new Game();
 
-
+//Event Listeners
 gameBoard.addEventListener('click', updateGameBoard);
+window.onload = loadSavedPlayers();
 
-
+//Functions
 function updateGameBoard(event) {
   var clickedIndex = event.target.closest("ul").id;
   
@@ -46,4 +50,10 @@ function resetBoard() {
   </ul>
   <ul class="square bottom-right" id="8">
   </ul>`
+}
+
+function loadSavedPlayers() {
+  game.playerX.retrieveWinsFromStorage();
+  game.playerO.retrieveWinsFromStorage();
+  game.updateWinCounter();
 }
