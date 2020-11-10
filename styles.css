@@ -109,6 +109,7 @@ article {
   .side-box {
     padding-top: 2vh;
     max-height: 1rem;
+    min-height: 200px;
   }
   
   .left-box {
