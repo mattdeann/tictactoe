@@ -1,9 +1,3 @@
-//Make an array containing nine spaces
-// make a function that will push to correct space depending on player input
-// assess whether or not game was won or tied
-// switch player who is allowed to run function
-
-
 class Game {
   constructor(playerXWins, playerOWins) {
     this.playerX = new Player('X', playerXWins);
@@ -12,8 +6,6 @@ class Game {
     this.currentPlayer = this.playerX;
     this.turnCount = 2;
   }
-
-  
 
   whosTurn() {
     if (this.turnCount % 2 === 0) {
@@ -26,11 +18,8 @@ class Game {
   }
 
   resetBoardOnDraw() {
-    this.playerX = new Player('X');
-    this.playerO = new Player('O');
-    this.board = [ , , , , , , , , ,];
-    this.currentPlayer = this.playerX;
-    this.turnCount = 2;
+    titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
+    setTimeout(resetBoard, 1500);
   }
 
 
@@ -44,20 +33,20 @@ class Game {
     }
   }
 
-  //if this.currentPlayer = this.playerX, then update x-wins
-
   updateWinCounter() {
     xWins.innerText = `${this.playerX.wins} wins`;
     oWins.innerText = `${this.playerO.wins} wins`;
   }
 
   checkWin() {
-    if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
+    if (this.rowWin() || this.columnWin() || this.diagonalWin()) {
       titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
       this.updateWinCounter();
       setTimeout(resetBoard, 1500);
     }
   }
+
+//NEXT 3 FUNCTIONS REFACTOR???
 
   rowWin() {
     if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("2")) {
