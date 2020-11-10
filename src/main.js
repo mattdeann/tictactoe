@@ -29,6 +29,7 @@ function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
 
   titleBox.innerText = `${game.currentPlayer.gamePiece} to move`
+  
   //BETTER WAY TO RESET INNERHTML???
 
   gameBoard.innerHTML = `

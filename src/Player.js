@@ -9,16 +9,15 @@ class Player {
     localStorage.setItem(`${this.gamePiece}`, JSON.stringify(this));
   }
 
+
   retrieveWinsFromStorage() {
-
-      var retrievedPlayer = JSON.parse(localStorage.getItem(`${this.gamePiece}`));
-      console.log(retrievedPlayer);
-      if (retrievedPlayer === null) {
-        this.wins = 0;
-      } else {
+    var retrievedPlayer = JSON.parse(localStorage.getItem(`${this.gamePiece}`));
+    
+    if (retrievedPlayer === null) {
+      this.wins = 0;
+    } else {
       this.wins = retrievedPlayer.wins
-      }
-
+    }
   }
 }
 
