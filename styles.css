@@ -6,14 +6,13 @@ body {
   overflow: hidden; 
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 2rem;
   text-align: center;
 }
 
 article {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 1em;
 }
 
 .side-box {
@@ -38,7 +37,7 @@ article {
   background: #ffffff;
 }
 
-h2 {
+.main-header {
   grid-row: 1 / 2;
   min-height: 15vh;
   padding: 20px;
