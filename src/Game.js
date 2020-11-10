@@ -25,6 +25,7 @@ class Game {
     if (this.rowWin() || this.columnWin() || this.diagonalWin()) {
       this.updateWinCounter();
       titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
+      this.currentPlayer.saveWinsToStorage();
       setTimeout(resetBoard, 1500);
       return true;
     }
