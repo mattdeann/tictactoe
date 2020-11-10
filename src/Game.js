@@ -16,11 +16,9 @@ class Game {
   }
 
   placeGamePiece(placementIndex)  {
-      this.turnCount++;
-      this.board.splice([placementIndex], 1, this.currentPlayer.gamePiece)
-      this.currentPlayer.gamePlacements.push(placementIndex); 
-    
-      
+    this.turnCount++;
+    this.board.splice([placementIndex], 1, this.currentPlayer.gamePiece)
+    this.currentPlayer.gamePlacements.push(placementIndex); 
   }
 
   checkWin() {
