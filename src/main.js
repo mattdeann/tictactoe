@@ -14,9 +14,11 @@ window.onload = loadSavedPlayers();
 //Functions
 function updateGameBoard(event) {
   var clickedIndex = event.target.closest("ul").id;
-  
-  game.placeGamePiece(clickedIndex)
-  event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
+
+  if (!game.playerX.gamePlacements.includes(clickedIndex) && !game.playerO.gamePlacements.includes(clickedIndex)) {
+    game.placeGamePiece(clickedIndex)
+    event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
+  }
   
   if (!game.checkWin() && !game.checkDraw()) {
     game.whosTurn();
