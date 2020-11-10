@@ -26,7 +26,6 @@ class Game {
   }
 
   resetBoardOnDraw() {
-    alert("Its a draw");
     this.playerX = new Player('X');
     this.playerO = new Player('O');
     this.board = [ , , , , , , , , ,];
@@ -45,59 +44,60 @@ class Game {
     }
   }
 
+  //if this.currentPlayer = this.playerX, then update x-wins
+
+  updateWinCounter() {
+    if (this.currentPlayer = this.playerX) {
+      xWins.innerText = `${this.currentPlayer.wins} wins`;
+    }
+  }
+
   checkWin() {
     if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
       titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
-    
-
+      this.updateWinCounter();
     }
   }
 
   rowWin() {
     if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("2")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
     if (this.currentPlayer.gamePlacements.includes("3") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("5")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
     if (this.currentPlayer.gamePlacements.includes("6") && this.currentPlayer.gamePlacements.includes("7") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     } 
   }
 
   columnWin() {
     if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("3") && this.currentPlayer.gamePlacements.includes("6")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
     if (this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("7")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
     if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("5") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     } 
   }
 
   diagonalWin() {
     if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
     if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("6")) {
-      this.currentPlayer.wins.push(this);
+      this.currentPlayer.wins++;
       return true;
     }
-  }
-
-  updateGameBoard(event) {
-    debugger
-    console.log(event.target.closest("ul"));
-    event.target.closest("ul").innerText = this.currentPlayer.gamePiece;
   }
 }
 

@@ -19,5 +19,11 @@ function updateGameBoard(event) {
   
   game.placeGamePiece(clickedIndex)
   event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
-  game.checkWin();
+  if(game.checkWin()) {
+    game = new Game;
+  };
+}
+
+function resetBoard() {
+  game = new Game;
 }
