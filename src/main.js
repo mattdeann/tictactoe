@@ -25,15 +25,11 @@ function updateGameBoard(event) {
     titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
   }
 }
-  
 
 function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
 
   titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
-  
-  //BETTER WAY TO RESET INNERHTML???
-
   gameBoard.innerHTML = `
   <ul class="square top-left" id="0">
   </ul>

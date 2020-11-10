@@ -24,13 +24,10 @@ class Game {
   }
 
   checkWin() {
-    if (this.rowWin() || this.columnWin() || this.diagonalWin()) {
-      this.updateWinCounter();
-      titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
-      this.currentPlayer.saveWinsToStorage();
-      setTimeout(resetBoard, 1500);
+    if (this.checkWinConditions("0", "1", "2") || this.checkWinConditions("3", "4", "5") || this.checkWinConditions("6", "7", "8") || this.checkWinConditions("0", "3", "6") || this.checkWinConditions("1", "4", "7") || this.checkWinConditions("2", "5", "8") || this.checkWinConditions("0", "4", "8") || this.checkWinConditions("2", "4", "6"))
+    {
       return true;
-    }
+    }  
   }
 
   updateWinCounter() {
@@ -46,50 +43,13 @@ class Game {
     }
   }
 
-//NEXT 3 FUNCTIONS REFACTOR???
-
-  rowWin() {
-    if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("2")) {
+  checkWinConditions(num1, num2, num3) {
+    if (this.currentPlayer.gamePlacements.includes(num1) && this.currentPlayer.gamePlacements.includes(num2) && this.currentPlayer.gamePlacements.includes(num3)) {
       this.currentPlayer.wins++;
-      return true;
-    }
-
-    if (this.currentPlayer.gamePlacements.includes("3") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("5")) {
-      this.currentPlayer.wins++;
-      return true;
-    }
-
-    if (this.currentPlayer.gamePlacements.includes("6") && this.currentPlayer.gamePlacements.includes("7") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins++;
-      return true;
-    } 
-  }
-
-  columnWin() {
-    if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("3") && this.currentPlayer.gamePlacements.includes("6")) {
-      this.currentPlayer.wins++;
-      return true;
-    }
-
-    if (this.currentPlayer.gamePlacements.includes("1") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("7")) {
-      this.currentPlayer.wins++;
-      return true;
-    }
-
-    if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("5") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins++;
-      return true;
-    } 
-  }
-
-  diagonalWin() {
-    if (this.currentPlayer.gamePlacements.includes("0") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("8")) {
-      this.currentPlayer.wins++;
-      return true;
-    }
-
-    if (this.currentPlayer.gamePlacements.includes("2") && this.currentPlayer.gamePlacements.includes("4") && this.currentPlayer.gamePlacements.includes("6")) {
-      this.currentPlayer.wins++;
+      this.updateWinCounter();
+      titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
+      this.currentPlayer.saveWinsToStorage();
+      setTimeout(resetBoard, 1500);
       return true;
     }
   }
