@@ -8,7 +8,7 @@ var oWins = document.querySelector(".o-wins");
 var game = new Game();
 
 //Event Listeners
-gameBoard.addEventListener('click', updateGameBoard);
+gameBoard.addEventListener('mouseup', updateGameBoard);
 window.onload = loadSavedPlayers();
 
 //Functions
@@ -28,8 +28,8 @@ function updateGameBoard(event) {
 
 function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
-  gameBoard.classList.remove("disable-click");
 
+  gameBoard.classList.remove("disable-click");
   titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
   gameBoard.innerHTML = `
   <ul class="square top-left" id="0">
