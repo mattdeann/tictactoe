@@ -38,6 +38,7 @@ class Game {
   checkDraw() {
     if (this.turnCount >= 11) {
       titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
+      gameBoard.classList.add("disable-click");
       setTimeout(resetBoard, 1500);
       return true;
     }
@@ -49,6 +50,7 @@ class Game {
       this.updateWinCounter();
       titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
       this.currentPlayer.saveWinsToStorage();
+      gameBoard.classList.add("disable-click");
       setTimeout(resetBoard, 1500);
       return true;
     }

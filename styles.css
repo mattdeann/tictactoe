@@ -48,6 +48,10 @@ article {
   background: #ffffff;
 }
 
+.disable-click {
+  pointer-events: none;
+}
+
 .main-header {
   grid-row: 1 / 2;
   min-height: 15vh;
