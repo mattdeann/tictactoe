@@ -5,10 +5,10 @@
 
 
 class Game {
-  constructor(board) {
-    this.playerX = new Player('X');
-    this.playerO = new Player('O');
-    this.board = board || [ , , , , , , , , ,];
+  constructor(playerXWins, playerOWins) {
+    this.playerX = new Player('X', playerXWins);
+    this.playerO = new Player('O', playerOWins);
+    this.board = [ , , , , , , , , ,];
     this.currentPlayer = this.playerX;
     this.turnCount = 2;
   }
@@ -47,15 +47,15 @@ class Game {
   //if this.currentPlayer = this.playerX, then update x-wins
 
   updateWinCounter() {
-    if (this.currentPlayer = this.playerX) {
-      xWins.innerText = `${this.currentPlayer.wins} wins`;
-    }
+    xWins.innerText = `${this.playerX.wins} wins`;
+    oWins.innerText = `${this.playerO.wins} wins`;
   }
 
   checkWin() {
     if (this.rowWin() === true || this.columnWin() === true || this.diagonalWin() === true) {
       titleBox.innerText = (`Looks like ${this.currentPlayer.gamePiece} is the winner!`);
       this.updateWinCounter();
+      setTimeout(resetBoard, 1500);
     }
   }
 
