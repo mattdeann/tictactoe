@@ -1,8 +1,10 @@
+// look into constructor refactoring with arrow functions
+
 class Game {
   constructor(playerXWins, playerOWins) {
     this.playerX = new Player('X', playerXWins);
     this.playerO = new Player('O', playerOWins);
-    this.board = [ , , , , , , , , ,];
+    this.board = [, , , , , , , , , ];
     this.currentPlayer = this.playerX;
     this.turnCount = 2;
   }
@@ -21,8 +23,10 @@ class Game {
     this.currentPlayer.gamePlacements.push(placementIndex); 
   }
 
+
+  // refactor this (shorten max len)
   checkWin() {
-    if (this.checkWinConditions("0", "1", "2") || this.checkWinConditions("3", "4", "5") || this.checkWinConditions("6", "7", "8") || this.checkWinConditions("0", "3", "6") || this.checkWinConditions("1", "4", "7") || this.checkWinConditions("2", "5", "8") || this.checkWinConditions("0", "4", "8") || this.checkWinConditions("2", "4", "6"))
+    if (this.checkCombos("0", "1", "2") || this.checkCombos("3", "4", "5") || this.checkCombos("6", "7", "8") || this.checkCombos("0", "3", "6") || this.checkCombos("1", "4", "7") || this.checkCombos("2", "5", "8") || this.checkCombos("0", "4", "8") || this.checkCombos("2", "4", "6"))
     {
       return true;
     }  
@@ -42,7 +46,7 @@ class Game {
     }
   }
 
-  checkWinConditions(num1, num2, num3) {
+  checkCombos(num1, num2, num3) {
     if (this.currentPlayer.gamePlacements.includes(num1) && this.currentPlayer.gamePlacements.includes(num2) && this.currentPlayer.gamePlacements.includes(num3)) {
       this.currentPlayer.wins++;
       this.updateWinCounter();
