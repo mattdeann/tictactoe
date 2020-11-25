@@ -13,9 +13,9 @@ window.onload = loadSavedPlayers();
 
 //Functions
 function updateGameBoard(event) {
-  let clickedIndex = event.target.closest("ul").id;
+  let click = event.target.closest("ul").id;
 
-  if (!checkFilledSquare(event)) {
+  if (!game.playerX.gamePlacements.includes(click) && !game.playerO.gamePlacements.includes(click)) {
     game.placeGamePiece(click)
     event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
   }
