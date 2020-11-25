@@ -1,5 +1,3 @@
-// look into constructor refactoring with arrow functions
-
 class Game {
   constructor(playerXWins, playerOWins) {
     this.playerX = new Player('X', playerXWins);
@@ -23,7 +21,6 @@ class Game {
     this.currentPlayer.gamePlacements.push(placementIndex); 
   }
 
-
   checkWinConditions() {
     if (this.checkVeritcalWin()) {
       return true;
@@ -36,16 +33,22 @@ class Game {
     }
   }
 
-
-
   checkHorizontalWin() {
-    if (this.checkWin("0", "1", "2") || this.checkWin("3", "4", "5") || this.checkWin("6", "7", "8")) {
+    if (this.checkWin("0", "1", "2")) {
+      return true;
+    } else if (this.checkWin("3", "4", "5")) {
+      return true;
+    } else if (this.checkWin("6", "7", "8")) {
       return true;
     }
   }
 
   checkVeritcalWin() {
-    if (this.checkWin("0", "3", "6") || this.checkWin("1", "4", "7") || this.checkWin("2", "5", "8")) {
+    if (this.checkWin("0", "3", "6")) {
+      return true;
+    } else if (this.checkWin("1", "4", "7")) {
+      return true;
+    } else if (this.checkWin("2", "5", "8")) {
       return true;
     }
   }
@@ -63,7 +66,21 @@ class Game {
   }
 
   checkWin(num1, num2, num3) {
-    if (this.currentPlayer.gamePlacements.includes(num1) && this.currentPlayer.gamePlacements.includes(num2) && this.currentPlayer.gamePlacements.includes(num3)) {
+    let inRow = new Array;
+
+    if (this.currentPlayer.gamePlacements.includes(num1)) {
+      inRow.push(num1);
+    }
+
+    if (this.currentPlayer.gamePlacements.includes(num2)) {
+      inRow.push(num2);
+    }
+
+    if (this.currentPlayer.gamePlacements.includes(num3)) {
+      inRow.push(num3);
+    }
+    
+    if (inRow.length > 2) {
       this.currentPlayer.wins++;
       this.currentPlayer.saveWinsToStorage();
       return true;
