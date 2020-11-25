@@ -1,8 +1,8 @@
 //Query Selectors
-var gameBoard = document.querySelector(".game-board");
-var titleBox = document.querySelector(".main-header");
-var xWins = document.querySelector(".x-wins");
-var oWins = document.querySelector(".o-wins");
+const gameBoard = document.querySelector(".game-board");
+const titleBox = document.querySelector(".main-header");
+const xWins = document.querySelector(".x-wins");
+const oWins = document.querySelector(".o-wins");
 
 //Global Variables
 let game = new Game();
@@ -13,26 +13,25 @@ window.onload = loadSavedPlayers();
 
 //Functions
 function updateGameBoard(event) {
-  const click = event.target.closest("ul").id;
+  let clickedIndex = event.target.closest("ul").id;
 
   if (!checkFilledSquare(event)) {
     game.placeGamePiece(click)
     event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
   }
   
-  if (!game.checkWin() && !game.checkDraw()) {
+  if (!game.checkWinConditions() && !game.checkDraw()) {
     game.whosTurn();
-    titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`;
-  }
+    titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
+    return;
+  } else if (game.checkDraw()) {
+    titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
+  } else if (game.checkWinConditions()) {
+   titleBox.innerText = (`${game.currentPlayer.gamePiece} WINS`);
+  } 
+  gameBoard.classList.add("disable-click");
+  setTimeout(resetBoard, 1500);
 }
-
-
-//working on refactoring this/shorten max len
-
-function checkFilledSquare(event) {
-  const fillCheck = event.target.closest("ul").id => game.playerX.gamePlacements.includes(click) && game.playerO.gamePlacements.includes(click));
-}
-
 
 function resetBoard() {
   game = new Game(game.playerX.wins, game.playerO.wins);
@@ -64,5 +63,10 @@ function resetBoard() {
 function loadSavedPlayers() {
   game.playerX.retrieveWinsFromStorage();
   game.playerO.retrieveWinsFromStorage();
-  game.updateWinCounter();
+  updateWinCounter();
 }
+
+function updateWinCounter() {
+  xWins.innerText = `${game.playerX.wins} wins`;
+  oWins.innerText = `${game.playerO.wins} wins`;
+} 
