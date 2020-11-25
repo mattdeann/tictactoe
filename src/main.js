@@ -1,11 +1,11 @@
 //Query Selectors
-var gameBoard = document.querySelector(".game-board");
-var titleBox = document.querySelector(".main-header");
-var xWins = document.querySelector(".x-wins");
-var oWins = document.querySelector(".o-wins");
+const gameBoard = document.querySelector(".game-board");
+const titleBox = document.querySelector(".main-header");
+const xWins = document.querySelector(".x-wins");
+const oWins = document.querySelector(".o-wins");
 
 //Global Variables
-var game = new Game();
+let game = new Game();
 
 //Event Listeners
 gameBoard.addEventListener('mouseup', updateGameBoard);
@@ -13,17 +13,24 @@ window.onload = loadSavedPlayers();
 
 //Functions
 function updateGameBoard(event) {
-  var clickedIndex = event.target.closest("ul").id;
+  let clickedIndex = event.target.closest("ul").id;
 
   if (!game.playerX.gamePlacements.includes(clickedIndex) && !game.playerO.gamePlacements.includes(clickedIndex)) {
     game.placeGamePiece(clickedIndex)
     event.target.closest("ul").innerText = game.currentPlayer.gamePiece;
   }
   
-  if (!game.checkWin() && !game.checkDraw()) {
+  if (!game.checkWinConditions() && !game.checkDraw()) {
     game.whosTurn();
     titleBox.innerText = `${game.currentPlayer.gamePiece} to move!`
-  }
+    return;
+  } else if (game.checkDraw()) {
+    titleBox.innerText = (`DRAW! YOU BOTH LOSE!`);
+  } else if (game.checkWinConditions()) {
+   titleBox.innerText = (`${game.currentPlayer.gamePiece} WINS`);
+  } 
+  gameBoard.classList.add("disable-click");
+  setTimeout(resetBoard, 1500);
 }
 
 function resetBoard() {
@@ -55,5 +62,10 @@ function resetBoard() {
 function loadSavedPlayers() {
   game.playerX.retrieveWinsFromStorage();
   game.playerO.retrieveWinsFromStorage();
-  game.updateWinCounter();
+  updateWinCounter();
 }
+
+function updateWinCounter() {
+  xWins.innerText = `${game.playerX.wins} wins`;
+  oWins.innerText = `${game.playerO.wins} wins`;
+} 
